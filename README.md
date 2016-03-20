@@ -69,7 +69,7 @@ RoleTypeはAWS Lambdaを選択する。
 ```bash
 $ npm install
 $ zip aws-ec2-created-usertag.zip -r aws-ec2-created-usertag.js log-config.json node_modules
-$ aws --region [作成するリージョン名] lambda create-function --function-name EC2CreatedUserTag --zip-file fileb://[Aipファイルへのパス]/aws-ec2-created-usertag.zip --role [上記で作成したロールのRole ARN] --handler aws-ec2-created-usertag.handler --runtime nodejs --timeout 60 --memory-size 128
+$ aws --region [作成するリージョン名] lambda create-function --function-name EC2CreatedUserTag --zip-file fileb://[Zipファイルへのパス]/aws-ec2-created-usertag.zip --role [上記で作成したロールのRole ARN] --handler aws-ec2-created-usertag.handler --runtime nodejs --timeout 60 --memory-size 128
 ```
 
 ## Event Sourceの設定
