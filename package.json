@@ -1,0 +1,10 @@
+{
+    "name": "aws-ec2-created-usertag",
+    "version":"0.0.1",
+    "main": "aws-ec2-created-usertag.js",
+    "dependencies": {
+	"aws-sdk": "2.2.45",
+	"log4js": "0.6.33"
+    },
+    "devDependencies": {}
+}
