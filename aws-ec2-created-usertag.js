@@ -3,6 +3,8 @@ Log4js.configure('log-config.json');
 var systemLogger = Log4js.getLogger('system');
 
 var AWS = require('aws-sdk');
+var s3 = new AWS.S3();
+
 var zlib = require('zlib');
 var Promise = require('bluebird');
 var fs = require('fs');
@@ -17,9 +19,8 @@ exports.handler = function(event, context) {
     systemLogger.debug('s3.object.key:', srcKey);
     systemLogger.debug('region:', region_name);
 
-    // s3, ec2はリージョンセット後に作成
+    // ec2はリージョンセット後に作成
     AWS.config.update({region: region_name});
-    var s3 = new AWS.S3();
     var ec2 = new AWS.EC2();
 
     var params = {
