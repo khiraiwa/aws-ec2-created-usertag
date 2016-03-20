@@ -88,8 +88,10 @@ exports.handler = function(event, context) {
 	}));
     }).then(function(result) {
 	systemLogger.info('Finish:', JSON.stringify(result, null, "  "));
+	context.succeed();
     }).catch(function(err) {
 	systemLogger.error('Reject:', err);
+	context.fail();
     });
 };
 
@@ -104,10 +106,19 @@ if (!module.parent) {
 	    }
 	    resolve(data);
 	});
-   }).then(function(data){
-       var inputJson = JSON.parse(data);
-       exports.handler(inputJson);
-   }).catch(function(err) {
-       systemLogger.error(err);
-   });
+    }).then(function(data){
+	var hoge = (function() {
+	    var hoge = function() {};
+	    var p = hoge.prototype;
+	    p.succeed = function() {};
+	    p.done = function() {};
+	    return hoge;
+	})();
+
+	var inputJson = JSON.parse(data);
+	var mockedContext = new hoge();
+	exports.handler(inputJson, mockedContext);
+    }).catch(function(err) {
+	systemLogger.error(err);
+    });
 }

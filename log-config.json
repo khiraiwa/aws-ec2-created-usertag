@@ -3,7 +3,7 @@
         {
             "type":     "dateFile",
             "category": "system",
-            "filename": "logs/system.log",
+            "filename": "/tmp/system.log",
             "pattern":  "-yyyy-MM-dd"
         },
         { "type": "console" }
